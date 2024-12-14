@@ -1,10 +1,10 @@
-from login.login import add_user, check_user, getpath
+from login.login import add_user, check_user, getpath, getnamefromid
 from flask import Flask, render_template, redirect, url_for, request, flash
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 import os
 
 
-add_user("a", "a")
+add_user("b", "b")
 app = Flask(__name__)
 app.secret_key = 'supersecretkey'  # Replace with a secure random key
 
@@ -26,8 +26,11 @@ def load_user(user_id):
 @app.route('/')
 @login_required
 def home():
+    vmsn = []
     vms = os.listdir(f"{getpath()}/../vm's/vm/{current_user.id}")
-    return render_template('dash.html',vms=vms)
+    for vm in vms:
+        vmsn.append(vm.split(".")[0])
+    return render_template('dash.html',vms=vmsn,username=getnamefromid(current_user.id))
 
 
 @app.route('/login', methods=['GET', 'POST'])

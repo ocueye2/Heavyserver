@@ -49,5 +49,11 @@ def check_user(username, password):
             print("Invalid username or password.")
             return -1
 
+def getnamefromid(idn):
+     with sqlite3.connect("users.db") as conn:
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM users WHERE id = ?", (idn))
+        user = cursor.fetchone()
+        return user[1]
 
 create_table()

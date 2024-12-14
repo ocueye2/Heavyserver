@@ -6,7 +6,17 @@
 </head>
 
 <body>
+    <h1 style="color: white;">Welcome {{username}}</h1>
     <style>
+        .logout {
+            backdrop-filter: blur(20px);
+            background-color: rgba(126, 146, 158, 0.452);
+            padding: 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: black;
+
+        }
         .vm {
             padding: 20px;
             margin: 5px;
@@ -28,34 +38,48 @@
             transition: all .3s;
             }
         body {
-            background-color: black;
+            background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Everest_North_Face_toward_Base_Camp_Tibet_Luca_Galuzzi_2006.jpg/1280px-Everest_North_Face_toward_Base_Camp_Tibet_Luca_Galuzzi_2006.jpg);
+            background-size: cover;
+            display: block;
         }
         .vmlist {
-            background-color: gray;
-            padding: 20px;
+            backdrop-filter: blur(20px);
+            background-color: rgba(126, 146, 158, 0.452);
+            padding: 50px;
             border-radius: 20px;
-            display: flex;
+            padding-right: 30%;
+            display: block;
         }
 
-    </style>
+    </style><div style="display: flex;">
     <div class="vmlist">
             <ul>
             {% with vms = vms %}
             {% if vms %}
             {% for vm in vms %}
+            <br>
             <a class="vm" href="{{ vm }}">
                 {{ vm }}
             </a>
             <br>
             <br>
             <br>
-            <br>
+            
             
             {% endfor %}
         </ul>
         {% endif %}
         {% endwith %}
     </div>
+    <br>
+    <br>
+    </div>
+    <br>
+    <br>
+    <a class="logout" href="logout">Logout</a>
+
+
+    </a>
 </body>
 
 </html>

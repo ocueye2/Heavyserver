@@ -26,8 +26,8 @@ def load_user(user_id):
 @app.route('/')
 @login_required
 def home():
-    print(os.listdir(f"{getpath()}/../vm's/vm/{current_user.id}"))
-    return os.listdir(f"{getpath()}/../vm's/vm/{current_user.id}")
+    vms = os.listdir(f"{getpath()}/../vm's/vm/{current_user.id}")
+    return render_template('dash.html',vms=vms)
 
 
 @app.route('/login', methods=['GET', 'POST'])

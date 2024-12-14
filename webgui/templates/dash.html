@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Login</title>
+</head>
+
+<body>
+    <style>
+        .vm {
+            padding: 20px;
+            margin: 5px;
+            border-width: 5px;
+            border-style: solid;
+            background-color: white;
+            border-radius: 20px;
+            color: black;
+            border-color: rgb(0, 0, 0);
+            transition: all .3s;
+            transform: scale(1);
+        }
+        .vm:hover {
+            transform: scale(1.3);
+            transition: all .3s;
+        }
+        .vm:active {
+            transform: scale(.8);
+            transition: all .3s;
+            }
+        body {
+            background-color: black;
+        }
+        .vmlist {
+            background-color: gray;
+            padding: 20px;
+            border-radius: 20px;
+            display: flex;
+        }
+
+    </style>
+    <div class="vmlist">
+            <ul>
+            {% with vms = vms %}
+            {% if vms %}
+            {% for vm in vms %}
+            <a class="vm" href="{{ vm }}">
+                {{ vm }}
+            </a>
+            <br>
+            <br>
+            <br>
+            <br>
+            
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+    </div>
+</body>
+
+</html>
